@@ -1,77 +1,48 @@
-# Deployment Guide for GitHub Pages
+# Deployment to GitHub Pages
 
-## Option 1: Manual Deployment
+This site deploys automatically to GitHub Pages via GitHub Actions — every push to
+`main` builds the static site and publishes it. No manual steps needed after setup.
 
-1. Build the project:
-   ```bash
-   npm run build
+## One-time setup
+
+1. **Repository name** — this site is configured to run at the root of your user
+   domain (`https://janithramanayake523.github.io/`). For that, the repository must
+   be named:
+
+   ```
+   JanithRamanayake523.github.io
    ```
 
-2. The static files will be in the `out` directory
+   Rename it under **Settings → General → Repository name** on GitHub.
+   (If you keep a different repo name instead, the site will live at
+   `https://janithramanayake523.github.io/<repo-name>/` and you must set
+   `basePath: '/<repo-name>'` in `next.config.js`.)
 
-3. Copy all files from the `out` directory to your GitHub Pages repository root
+2. **Enable GitHub Pages** — in the repo go to
+   **Settings → Pages → Build and deployment** and set **Source** to
+   **GitHub Actions**.
 
-4. Commit and push to GitHub
+3. Push to `main` — the workflow in `.github/workflows/deploy.yml` builds the
+   site and deploys the `out/` directory. The first deploy takes 1–3 minutes.
 
-## Option 2: Automated GitHub Actions Deployment
+## How it works
 
-Create `.github/workflows/deploy.yml` in your repository:
+- `npm run build` produces a fully static export in `out/` (see
+  `next.config.js` → `output: 'export'`).
+- `public/.nojekyll` is copied into `out/` so GitHub Pages serves `_next/`
+  assets correctly.
+- The Actions workflow (`deploy.yml`) uploads `out/` and publishes it with
+  `actions/deploy-pages`.
 
-```yaml
-name: Deploy to GitHub Pages
+## Updating the site
 
-on:
-  push:
-    branches: [main]
+1. Make your changes (content lives in `lib/site.ts`, `lib/blogData.ts`,
+   `lib/projectsData.ts`).
+2. Commit and push to `main`.
+3. GitHub Actions rebuilds and redeploys automatically — watch progress under
+   the repo's **Actions** tab.
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+## Custom domain (optional)
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-      - name: Install dependencies
-        run: npm ci
-      - name: Build
-        run: npm run build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: ./out
-
-  deploy:
-    environment:
-      name: github-pages
-      url: $\{{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
-```
-
-## Important Notes
-
-- The `out` directory contains your static website
-- The `.nojekyll` file is included to prevent GitHub Pages from processing with Jekyll
-- Make sure to enable GitHub Pages in your repository settings
-- Set the source to "GitHub Actions" in the Pages settings
-
-## Verifying the Deployment
-
-After deployment, your site will be available at:
-`https://yourusername.github.io/`
-
-## Updating the Site
-
-1. Make changes to your Next.js project
-2. Run `npm run build`
-3. Deploy the new `out` directory contents
+If you ever want a custom domain, add it under **Settings → Pages → Custom
+domain** and commit a `CNAME` file with the domain into `public/`.

@@ -2,39 +2,22 @@ import { site } from '@/lib/site';
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-line py-12">
-      <div className="max-w-6xl mx-auto px-5 sm:px-8">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-          <a href="#" className="font-display text-lg font-bold">
-            <span className="gradient-text">Janith</span>
-            <span className="text-ink">.</span>
-          </a>
-
-          <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-muted">
-            {['About', 'Research', 'Publications', 'Projects', 'Blog', 'Contact'].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="hover:text-accent transition-colors"
-              >
-                {item}
-              </a>
-            ))}
-          </nav>
-
+    <footer className="border-t border-line py-8 mt-6">
+      <div className="max-w-4xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-faint">
+        <p>
+          &copy; {new Date().getFullYear()} {site.name}
+        </p>
+        <p>
+          Built with Next.js ·{' '}
           <a
-            href={`mailto:${site.email}`}
-            className="text-sm text-muted hover:text-accent transition-colors"
+            href="https://github.com/JanithRamanayake523/Janith-Ramanayake-Personal-Portfolio"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-accent"
           >
-            {site.email}
+            Source
           </a>
-        </div>
-
-        <div className="mt-8 pt-6 border-t border-line/50 text-center">
-          <p className="text-xs text-faint">
-            &copy; {new Date().getFullYear()} Janith Ramanayake · Designed & built with Next.js
-          </p>
-        </div>
+        </p>
       </div>
     </footer>
   );

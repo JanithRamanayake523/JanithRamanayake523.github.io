@@ -30,9 +30,9 @@ This will generate a static export in the `out` directory.
 
 ## Deployment to GitHub Pages
 
-1. Build the project: `npm run build`
-2. The static files will be in the `out` directory
-3. Deploy the contents of the `out` directory to your GitHub Pages repository
+The site deploys automatically via GitHub Actions — just push to `main`.
+See [DEPLOYMENT.md](DEPLOYMENT.md) for the one-time setup (repo naming +
+enabling Pages).
 
 ## Project Structure
 
@@ -52,8 +52,8 @@ This will generate a static export in the `out` directory.
 
 ## Technologies Used
 
-- Next.js 14+
+- Next.js 16
 - React 19
 - TypeScript
-- Tailwind CSS
-- GitHub Pages (deployment)
+- Tailwind CSS v4
+- GitHub Pages + GitHub Actions (deployment)

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google'
+import { Inter, Newsreader, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
 const inter = Inter({
@@ -8,9 +8,9 @@ const inter = Inter({
   display: 'swap',
 })
 
-const spaceGrotesk = Space_Grotesk({
+const newsreader = Newsreader({
   subsets: ['latin'],
-  variable: '--font-space-grotesk',
+  variable: '--font-newsreader',
   display: 'swap',
 })
 
@@ -21,22 +21,22 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Janith Ramanayake — AI & Statistics Researcher',
+  title: 'Janith Ramanayake',
   description:
-    'Deep learning researcher and data science graduate exploring signals, images, and language through AI and statistical reasoning. Graduate Teaching Assistant at the University of Colombo.',
+    'Master\u2019s student and researcher working on machine learning, deep learning, and statistical modeling. Graduate Teaching Assistant at the University of Colombo.',
   keywords: [
     'Janith Ramanayake',
-    'Deep Learning',
     'Machine Learning',
+    'Deep Learning',
     'Statistics',
     'Computer Vision',
     'NLP',
     'University of Colombo',
   ],
   openGraph: {
-    title: 'Janith Ramanayake — AI & Statistics Researcher',
+    title: 'Janith Ramanayake',
     description:
-      'Deep learning researcher unlocking hidden patterns in signals, images, and language.',
+      'Master\u2019s student and researcher in machine learning and statistics at the University of Colombo.',
     type: 'website',
   },
 }
@@ -49,7 +49,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+      className={`${inter.variable} ${newsreader.variable} ${jetbrainsMono.variable}`}
     >
       <body>{children}</body>
     </html>

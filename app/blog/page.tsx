@@ -1,9 +1,7 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PageHeader from '@/components/ui/PageHeader';
-import Reveal from '@/components/ui/Reveal';
 import { blogPosts } from '@/lib/blogData';
 
 export const metadata = {
@@ -17,60 +15,42 @@ export default function BlogPage() {
       <Navbar alwaysBlue={true} />
       <main className="min-h-screen">
         <PageHeader
-          eyebrow="Writing"
-          title="The Blog"
-          highlight="Blog"
-          description="Thoughts on AI, statistics, research, and the journey along the way."
+          title="Writing"
+          description="Notes on AI, statistics, research, and the journey along the way."
         />
 
-        <div className="max-w-6xl mx-auto px-5 sm:px-8 pb-28">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
-            {blogPosts.map((post, i) => {
+        <div className="max-w-4xl mx-auto px-5 sm:px-8 pb-24">
+          <ul className="divide-y divide-line">
+            {blogPosts.map((post) => {
               const dateObj = new Date(post.date);
               const formatted = dateObj.toLocaleDateString('en-US', {
+                year: 'numeric',
                 month: 'short',
                 day: 'numeric',
-                year: 'numeric',
               });
 
               return (
-                <Reveal key={post.slug} delay={(i % 3) * 100} className="h-full">
-                  <Link href={`/blog/${post.slug}`} className="block h-full group">
-                    <article className="card overflow-hidden h-full flex flex-col">
-                      <div className="relative h-48 overflow-hidden">
-                        <Image
-                          src={post.image}
-                          alt={post.title}
-                          width={600}
-                          height={300}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#04060c] via-transparent to-transparent" />
-                        <span className="absolute top-4 left-4 tag backdrop-blur-md">
-                          {post.category}
-                        </span>
-                      </div>
-                      <div className="p-6 flex flex-col flex-1">
-                        <p className="font-mono text-xs text-faint mb-3">
-                          {formatted} · {post.readTime}
-                        </p>
-                        <h2 className="font-display text-lg font-semibold leading-snug mb-3 group-hover:text-accent transition-colors duration-300">
+                <li key={post.slug} className="py-5">
+                  <Link href={`/blog/${post.slug}`} className="group block">
+                    <div className="flex items-baseline gap-4">
+                      <span className="font-mono text-xs text-faint shrink-0 w-24">
+                        {formatted}
+                      </span>
+                      <div className="min-w-0">
+                        <h2 className="text-ink font-medium group-hover:text-accent transition-colors">
                           {post.title}
                         </h2>
-                        <p className="text-muted text-sm leading-relaxed flex-1">{post.excerpt}</p>
-                        <span className="inline-flex items-center gap-1.5 mt-5 text-sm font-medium text-accent">
-                          Read article
-                          <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5-5 5M6 12h12" />
-                          </svg>
-                        </span>
+                        <p className="text-sm text-muted mt-1 leading-relaxed">{post.excerpt}</p>
+                        <p className="text-xs text-faint mt-2">
+                          {post.category} · {post.readTime}
+                        </p>
                       </div>
-                    </article>
+                    </div>
                   </Link>
-                </Reveal>
+                </li>
               );
             })}
-          </div>
+          </ul>
         </div>
       </main>
       <Footer />

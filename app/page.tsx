@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
+import News from '@/components/News'
 import About from '@/components/About'
 import Research from '@/components/Research'
 import Publications from '@/components/Publications'
@@ -10,12 +11,13 @@ import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <main className="w-full overflow-x-hidden">
+    <main className="w-full">
       <Navbar />
       <Hero />
+      <News />
       <About />
-      <Research />
       <Publications />
+      <Research />
       <Projects />
       <Blog />
       <Contact />
