@@ -6,7 +6,7 @@ export default function Blog() {
 
   return (
     <section id="blog" className="py-14">
-      <div className="max-w-4xl mx-auto px-5 sm:px-8">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <h2 className="section-title">Writing</h2>
         <ul className="divide-y divide-line mb-8">
           {posts.map((post) => {

@@ -1,36 +1,31 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { site } from '@/lib/site';
 
-const NAV_ITEMS = ['About', 'News', 'Publications', 'Experience', 'Projects', 'Blog', 'Contact'];
+const NAV_ITEMS = ['About', 'News', 'Publications', 'Experience', 'Blog', 'Contact'];
 
 export default function Navbar({ alwaysBlue = false }: { alwaysBlue?: boolean }) {
-  const [scrolled, setScrolled] = useState(alwaysBlue);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    if (alwaysBlue) return;
-    const handleScroll = () => setScrolled(window.scrollY > 12);
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [alwaysBlue]);
-
-  const solid = scrolled || alwaysBlue;
-
   return (
-    <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        solid
-          ? 'bg-white/90 backdrop-blur-md border-b border-line'
-          : 'bg-transparent border-b border-transparent'
-      }`}
-    >
-      <div className="max-w-4xl mx-auto px-5 sm:px-8">
+    <nav className="fixed top-0 left-0 w-full z-50 bg-[#0c6f50]/95 backdrop-blur-md border-b border-[#09573e] shadow-[0_4px_20px_-8px_rgba(12,111,80,0.5)]">
+      {/* Same subtle grid pattern as the contact section */}
+      <div
+        className="absolute inset-0 opacity-[0.07] pointer-events-none"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)',
+          backgroundSize: '44px 44px',
+        }}
+      />
+      <div className="relative max-w-6xl mx-auto px-5 sm:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link href="/" className="font-display text-lg font-semibold tracking-tight text-ink">
+          <Link
+            href="/"
+            className="font-display text-lg font-semibold tracking-tight text-white"
+          >
             {site.name}
           </Link>
 
@@ -42,7 +37,7 @@ export default function Navbar({ alwaysBlue = false }: { alwaysBlue?: boolean })
                 <li key={item}>
                   <a
                     href={alwaysBlue ? `/#${id}` : `#${id}`}
-                    className="text-sm text-muted hover:text-ink transition-colors"
+                    className="text-sm text-emerald-50/85 hover:text-white transition-colors"
                   >
                     {item}
                   </a>
@@ -59,17 +54,17 @@ export default function Navbar({ alwaysBlue = false }: { alwaysBlue?: boolean })
           >
             <div className="flex flex-col gap-[5px]">
               <span
-                className={`w-5 h-[1.5px] bg-ink transition-all duration-300 ${
+                className={`w-5 h-[1.5px] bg-white transition-all duration-300 ${
                   mobileMenuOpen ? 'rotate-45 translate-y-[6.5px]' : ''
                 }`}
               />
               <span
-                className={`w-5 h-[1.5px] bg-ink transition-all duration-300 ${
+                className={`w-5 h-[1.5px] bg-white transition-all duration-300 ${
                   mobileMenuOpen ? 'opacity-0' : ''
                 }`}
               />
               <span
-                className={`w-5 h-[1.5px] bg-ink transition-all duration-300 ${
+                className={`w-5 h-[1.5px] bg-white transition-all duration-300 ${
                   mobileMenuOpen ? '-rotate-45 -translate-y-[6.5px]' : ''
                 }`}
               />
@@ -80,7 +75,7 @@ export default function Navbar({ alwaysBlue = false }: { alwaysBlue?: boolean })
 
       {/* Mobile menu */}
       <div
-        className={`md:hidden bg-white border-b border-line overflow-hidden transition-all duration-300 ${
+        className={`md:hidden bg-[#0c6f50] border-b border-[#09573e] overflow-hidden transition-all duration-300 ${
           mobileMenuOpen ? 'max-h-[420px]' : 'max-h-0'
         }`}
       >
@@ -89,7 +84,7 @@ export default function Navbar({ alwaysBlue = false }: { alwaysBlue?: boolean })
             <li key={item}>
               <a
                 href={alwaysBlue ? `/#${item.toLowerCase()}` : `#${item.toLowerCase()}`}
-                className="block py-2.5 text-sm text-muted hover:text-ink transition-colors"
+                className="block py-2.5 text-sm text-emerald-50/85 hover:text-white transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item}

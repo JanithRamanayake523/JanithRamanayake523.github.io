@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  /* Surfaces — ash background, white cards, blue-grey bands */
-  --color-base: #f0f3f8;
-  --color-surface: #e9edf5;
-  --color-band: #e6ebf4;
+  /* Surfaces — warm ash harmonized with the hero canvas (#f0f0ef) */
+  --color-base: #ececea;
+  --color-surface: #e6e6e2;
+  --color-band: #e4e4df;
   --color-card: #ffffff;
-  --color-line: #dde3ee;
+  --color-line: #dcdcd5;
 
   /* Text */
   --color-ink: #1c2333;
   --color-muted: #5b6478;
   --color-faint: #98a0b3;
 
-  /* Accent — a single calm academic blue */
-  --color-accent: #2f5fd0;
-  --color-accent-soft: #e3ebfb;
+  /* Accent — deep emerald */
+  --color-accent: #0e8a63;
+  --color-accent-soft: #e0f2ea;
 
   /* Fonts (wired to next/font variables in layout.tsx) */
   --font-display: var(--font-newsreader), Georgia, serif;
@@ -39,15 +39,15 @@ body {
 }
 
 ::selection {
-  background: #d7e3fb;
-  color: #14224a;
+  background: #c9ecdd;
+  color: #0c3b2a;
 }
 
 ::-webkit-scrollbar {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f3f8;
+  background: #e8e8e4;
 }
 ::-webkit-scrollbar-thumb {
   background: #cfd6e4;
@@ -78,7 +78,7 @@ body {
   font-weight: 500;
   color: var(--color-accent);
   background: var(--color-accent-soft);
-  border: 1px solid #dbe5fa;
+  border: 1px solid #c6e7d8;
 }
 
 .card {
@@ -89,7 +89,7 @@ body {
 }
 
 .card:hover {
-  border-color: #c9d6f5;
+  border-color: #aedcc8;
   box-shadow: 0 10px 30px -18px rgba(28, 35, 51, 0.25);
   transform: translateY(-3px);
 }
@@ -101,7 +101,7 @@ body {
 }
 
 .link-accent:hover {
-  color: #1e419c;
+  color: #0a6b4c;
   text-decoration: underline;
   text-underline-offset: 3px;
 }

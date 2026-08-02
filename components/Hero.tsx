@@ -41,19 +41,51 @@ const socials = [
 
 export default function Hero() {
   return (
-    <section id="about" className="pt-32 pb-16">
+    <section
+      id="about"
+      className="pt-32 pb-16"
+      style={{ background: '#f0f0ef' }}
+    >
       <div className="max-w-4xl mx-auto px-5 sm:px-8">
-        <div className="flex flex-col sm:flex-row gap-10 items-start">
-          {/* Photo */}
-          <div className="shrink-0 mx-auto sm:mx-0">
-            <Image
-              src={site.photo}
-              alt={site.name}
-              width={190}
-              height={230}
-              className="rounded-xl object-cover border border-line"
-              priority
-            />
+        <div className="flex flex-col sm:flex-row gap-10 sm:items-stretch">
+          {/* Photo — blends into the section background, stretches to content height */}
+          <div className="shrink-0 mx-auto sm:mx-0 w-[260px] sm:w-[300px] flex flex-col">
+            <div className="relative w-full h-[350px] sm:flex-1">
+              <Image
+                src={site.photo}
+                alt={site.name}
+                fill
+                className="object-contain object-top"
+                priority
+              />
+            </div>
+
+            {/* Links */}
+            <div className="flex items-center justify-center gap-4 mt-4">
+              {socials.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target={social.href.startsWith('http') ? '_blank' : undefined}
+                  rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  aria-label={social.label}
+                  title={social.label}
+                  className="text-muted hover:text-accent transition-colors"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    {social.icon}
+                  </svg>
+                </a>
+              ))}
+              <a
+                href={site.cvUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-1 text-sm font-medium px-4 py-1.5 rounded-full border border-line text-ink hover:border-accent hover:text-accent transition-colors"
+              >
+                CV
+              </a>
+            </div>
           </div>
 
           {/* Intro */}
@@ -95,33 +127,6 @@ export default function Hero() {
                   {interest}
                 </span>
               ))}
-            </div>
-
-            {/* Links */}
-            <div className="flex items-center gap-4 mt-7">
-              {socials.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target={social.href.startsWith('http') ? '_blank' : undefined}
-                  rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  aria-label={social.label}
-                  title={social.label}
-                  className="text-muted hover:text-accent transition-colors"
-                >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    {social.icon}
-                  </svg>
-                </a>
-              ))}
-              <a
-                href={site.cvUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ml-1 text-sm font-medium px-4 py-1.5 rounded-full border border-line text-ink hover:border-accent hover:text-accent transition-colors"
-              >
-                CV
-              </a>
             </div>
           </div>
         </div>

@@ -29,7 +29,7 @@ const projects: ResearchProject[] = [
     title: 'Enhancing Sleep Stage Classification with Vision Transformers',
     description:
       'Vision transformer models for sleep stage classification by converting EEG signals into images — evaluating image representations, GAN-based augmentation, and fine-tuned ViT architectures.',
-    image: '/assets/hero.jpg',
+    image: '/assets/research/eeg.jpg',
     tags: ['EEG Processing', 'Vision Transformers'],
     status: 'Completed',
   },
@@ -54,7 +54,7 @@ const projects: ResearchProject[] = [
 export default function Research() {
   return (
     <section id="research" className="py-14">
-      <div className="max-w-4xl mx-auto px-5 sm:px-8">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <h2 className="section-title">Research</h2>
         <div className="space-y-6">
           {projects.map((project) => (

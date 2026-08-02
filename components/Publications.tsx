@@ -40,7 +40,7 @@ const publications: Publication[] = [
 export default function Publications() {
   return (
     <section id="publications" className="py-14 bg-band">
-      <div className="max-w-4xl mx-auto px-5 sm:px-8">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <h2 className="section-title">Publications & Presentations</h2>
         <ol className="space-y-7">
           {publications.map((pub, i) => (

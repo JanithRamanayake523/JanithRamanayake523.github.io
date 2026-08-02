@@ -17,7 +17,7 @@ export const site = {
     'Sri Lanka',
   ],
   cvUrl: '/assets/cv.pdf',
-  photo: '/assets/Janith.jpg',
+  photo: '/assets/Janith.png',
   links: {
     github: 'https://github.com/JanithRamanayake',
     linkedin: 'https://www.linkedin.com/in/janithramanayake523',
@@ -27,7 +27,8 @@ export const site = {
   },
 }
 
-// ---- News / Updates (newest first) ----
+// ---- News / Updates (newest first; the 5 most recent are shown by
+// default, the rest appear under "Older news") ----
 export const news = [
   {
     date: '2026/01',
@@ -49,6 +50,31 @@ export const news = [
     date: '2025/04',
     text: 'Graduated with a BSc (Hons) in Data Science from the University of Colombo.',
   },
+  // ---- Older news ----
+  {
+    date: '2025/03',
+    text: 'Defended my final-year research project on enhancing sleep stage classification with vision transformers.', // [DUMMY] — adjust date/details
+  },
+  {
+    date: '2024/11',
+    text: 'Built HappyHire, a generative AI recruitment management agent, with team Rapid Vortex at the IntelliHack competition.',
+  },
+  {
+    date: '2024/06',
+    text: 'Launched CrediDecode, an interactive credit score classification and analysis platform.', // [DUMMY] — adjust date
+  },
+  {
+    date: '2023/09',
+    text: 'Started working on cross-lingual sentiment modeling for financial texts in English, Sinhala, and Tamil.', // [DUMMY] — adjust date
+  },
+  {
+    date: '2021/09',
+    text: 'Completed my research internship as a Data Scientist at the Central Bank of Sri Lanka.',
+  },
+  {
+    date: '2021/04',
+    text: 'Started my BSc (Hons) in Data Science at the University of Colombo.',
+  },
 ]
 
 // ---- At a Glance ----
@@ -60,7 +86,7 @@ export const glance = [
   { label: 'Institution', value: 'University of Colombo' },
   {
     label: 'Main Areas',
-    value: 'Deep Learning · Signal Processing · NLP',
+    value: ['Deep Learning', 'Signal Processing', 'Natural Language Processing'],
   },
   {
     label: 'Previously',
@@ -77,44 +103,65 @@ export const researchInterests = [
   'Natural Language Processing',
 ]
 
-export const education = [
+export interface HistoryEntry {
+  title: string
+  place: string
+  period: string
+  /** Logo image path; if omitted, `monogram` initials are shown instead */
+  logo?: string
+  monogram?: string
+}
+
+export const education: HistoryEntry[] = [
   {
-    title: 'MSc in Data Science', // [DUMMY] — confirm degree name
-    place: 'University of Colombo', // [DUMMY] — confirm university
-    period: '2025 — Present',
-    logo: '/assets/uoc.png',
+    title: 'MSc (By Research) in Data Science',
+    place: 'University of Moratuwa',
+    period: 'Aug 2026 - Present',
+    logo: '/assets/uom.png',
   },
   {
     title: 'BSc (Hons) in Data Science',
     place: 'University of Colombo',
-    period: 'Apr 2021 — Apr 2025',
+    period: 'Apr 2021 - Apr 2025',
     logo: '/assets/uoc.png',
   },
   {
     title: 'Diploma in Software Engineering',
-    place: 'Institute of Software Engineering',
-    period: 'Jan 2020 — Sep 2021',
+    place: 'IJSE',
+    period: 'Jan 2020 - Sep 2021',
     logo: '/assets/ijse.png',
   },
   {
     title: 'GCE Advanced Level',
     place: 'Mahinda College Galle',
-    period: '',
+    period: 'Feb 2011 - Aug 2019',
     logo: '/assets/mahinda.png',
   },
 ]
 
-export const experience = [
+export const experience: HistoryEntry[] = [
   {
-    title: 'Graduate Teaching Assistant',
+    title: 'Research Assistant',
+    place: 'University of Moratuwa',
+    period: 'Jul 2026 - Present',
+    logo: '/assets/uom.png',
+  },
+  {
+    title: 'Research Assistant (Part-Time)',
+    place: 'University of Peradeniya',
+    period: 'Jun 2026 - Present',
+    logo: '/assets/uop.webp',
+  },
+  {
+    title: 'Temporary Assistant Lecturer',
     place: 'University of Colombo',
-    period: 'May 2025 — Present',
+    period: 'May 2025 - Jun 2026',
     logo: '/assets/uoc.png',
   },
   {
     title: 'Intern Data Scientist (Research)',
     place: 'Central Bank of Sri Lanka',
-    period: 'Jan 2020 — Sep 2021',
+    period: 'Jan 2020 - Sep 2021',
     logo: '/assets/cbsl.png',
   },
 ]
