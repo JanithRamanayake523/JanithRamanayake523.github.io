@@ -1,51 +1,30 @@
-# Janith Ramanayake — Personal Portfolio
+# Hey, I'm Janith 👋
 
-My personal academic portfolio, live at **[janithramanayake523.github.io](https://janithramanayake523.github.io/)**.
+Welcome to my little corner of the internet! 🌐
 
-I'm a Master's student in Data Science and researcher working on machine learning,
-deep learning, and statistical modeling — currently a Research Assistant at the
-University of Moratuwa and the University of Peradeniya.
+This is my personal portfolio — a place where I share what I'm working on,
+what I've done, and what I'm curious about. Take a look around:
+**[janithramanayake523.github.io](https://janithramanayake523.github.io/)** ✨
 
-## What's on the site
+## A bit about me 🎓
 
-- **About** — short bio, research interests, and links
-- **Updates** — recent news with an expandable archive
-- **Education & Experience** — academic and professional history
-- **Publications & Presentations** — conference papers and abstracts
-- **Research** — ongoing and completed research projects
-- **Writing** — blog posts
-- **Contact** — email, CV, and social links
+I'm a Master's student in Data Science who spends most of his time teaching
+machines to see, read, and listen 🤖📊 — from sleep-stage classification with
+EEG signals to cross-lingual sentiment analysis in Sinhala and Tamil.
 
-## Built with
+## What you'll find here 🔍
 
-- [Next.js](https://nextjs.org/) 16 (App Router, static export)
-- [React](https://react.dev/) 19 + TypeScript
-- [Tailwind CSS](https://tailwindcss.com/) v4
-- Deployed on **GitHub Pages** via GitHub Actions
+- 📰 **Updates** — the latest happenings in my academic journey
+- 🎓 **Education & Experience** — where I've studied and worked
+- 📄 **Publications** — papers and conference presentations
+- 🔬 **Research** — the projects keeping me up at night (in a good way)
+- ✍️ **Writing** — occasional blog posts about my journey
+- 💬 **Want to chat?** — my inbox is always open!
 
-## Editing content
+## Say hi! 👋
 
-All site content lives in a few data files — no need to touch components:
-
-| File            | What it controls                                              |
-| --------------- | ------------------------------------------------------------- |
-| `lib/site.ts`   | Name, bio, links, news/updates, education, experience        |
-| `lib/blogData.ts` | Blog posts (see [BLOG_GUIDE.md](BLOG_GUIDE.md))             |
-| `public/assets/` | Images, CV, logos                                            |
-
-## Running locally
-
-```bash
-npm install
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000).
-
-## Deployment
-
-The site is a fully static export (`out/`) and deploys automatically to GitHub
-Pages on every push to `main`. See [DEPLOYMENT.md](DEPLOYMENT.md) for details.
+Found something interesting? Working on something cool? Just want to talk
+research? Reach out — I'd love to hear from you! 😊
 
 ---
 
