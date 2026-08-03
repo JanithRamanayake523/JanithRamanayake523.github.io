@@ -1,3 +1,7 @@
+'use client';
+
+import { useState } from 'react';
+
 interface Publication {
   title: string;
   authors: string;
@@ -35,15 +39,54 @@ const publications: Publication[] = [
       { label: 'Code', url: '#' },
     ],
   },
+  // --- Dummy entries below, replace with real publications ---
+  {
+    title: 'Deep Learning Approaches for Financial Time Series Forecasting in Emerging Markets',
+    authors: 'Janith R.R.H. Ramanayake, Nadeesha K. Perera',
+    venue: 'International Conference on Machine Learning Applications (ICMLA), 2025',
+    type: 'Presentation',
+    links: [
+      { label: 'PDF', url: '#' },
+      { label: 'Slides', url: '#' },
+      { label: 'Code', url: '#' },
+    ],
+  },
+  {
+    title: 'Statistical Modeling of Climate Variability Using Bayesian Hierarchical Methods',
+    authors: 'Janith R.R.H. Ramanayake, Tharindu S. Fernando, Chamari L. Silva',
+    venue: 'Sri Lanka Statistical Association Conference (SLSAC), 2024',
+    type: 'Abstract',
+    links: [
+      { label: 'PDF', url: '#' },
+      { label: 'Code', url: '#' },
+    ],
+  },
+  {
+    title: 'Low-Resource Neural Machine Translation for Sinhala-English Language Pairs',
+    authors: 'Kasun M. Bandara, Janith R.R.H. Ramanayake',
+    venue: 'International Conference on Natural Language Processing (ICONLP), 2024',
+    type: 'Presentation',
+    links: [
+      { label: 'PDF', url: '#' },
+      { label: 'Slides', url: '#' },
+      { label: 'Code', url: '#' },
+    ],
+  },
 ];
 
+const INITIAL_COUNT = 3;
+
 export default function Publications() {
+  const [expanded, setExpanded] = useState(false);
+  const visible = expanded ? publications : publications.slice(0, INITIAL_COUNT);
+  const hiddenCount = publications.length - INITIAL_COUNT;
+
   return (
     <section id="publications" className="py-14 bg-band">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <h2 className="section-title">Publications & Presentations</h2>
         <ol className="space-y-7">
-          {publications.map((pub, i) => (
+          {visible.map((pub, i) => (
             <li key={pub.title} className="flex gap-4">
               <span className="font-mono text-sm text-faint pt-0.5 shrink-0">[{i + 1}]</span>
               <div>
@@ -70,6 +113,14 @@ export default function Publications() {
             </li>
           ))}
         </ol>
+        {hiddenCount > 0 && (
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="link-accent text-sm font-medium mt-8 cursor-pointer"
+          >
+            {expanded ? 'Show less ↑' : `Show ${hiddenCount} more ↓`}
+          </button>
+        )}
       </div>
     </section>
   );
