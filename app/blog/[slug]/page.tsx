@@ -44,9 +44,17 @@ export default async function BlogPost({
             {post.title}
           </h1>
 
-          <p className="text-sm text-faint mb-10">
-            {post.date} · {post.readTime} · {post.category}
-          </p>
+          <div className="flex flex-wrap items-center gap-3 mb-10">
+            <span className="tag">{post.category}</span>
+            <p className="font-mono text-xs text-faint">
+              {new Date(post.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}{' '}
+              · {post.readTime}
+            </p>
+          </div>
 
           <div className="relative h-60 sm:h-80 rounded-lg overflow-hidden border border-line mb-10">
             <Image src={post.image} alt={post.title} fill className="object-cover" priority />
