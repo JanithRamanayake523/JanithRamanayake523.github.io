@@ -79,8 +79,7 @@ export default function Hero() {
               ))}
               <a
                 href={site.cvUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                download="Janith-Ramanayake-CV.pdf"
                 className="ml-1 text-sm font-medium px-4 py-1.5 rounded-full border border-line text-ink hover:border-accent hover:text-accent transition-colors"
               >
                 CV

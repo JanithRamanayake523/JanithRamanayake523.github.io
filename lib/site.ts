@@ -19,7 +19,7 @@ export const site = {
   cvUrl: '/assets/cv.pdf',
   photo: '/assets/Janith.png',
   links: {
-    github: 'https://github.com/JanithRamanayake',
+    github: 'https://github.com/JanithRamanayake523',
     linkedin: 'https://www.linkedin.com/in/janithramanayake523',
     researchgate:
       'https://www.researchgate.net/profile/Janith-Ramanayake?ev=hdr_xprf',

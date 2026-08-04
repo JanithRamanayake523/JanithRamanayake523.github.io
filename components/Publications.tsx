@@ -4,13 +4,27 @@ import { useState } from 'react';
 
 interface Publication {
   title: string;
-  authors: string;
+  authors?: string;
   venue: string;
-  type: 'Presentation' | 'Abstract';
+  type: 'Presentation' | 'Abstract' | 'Under Review';
   links: { label: string; url: string }[];
 }
 
 const publications: Publication[] = [
+  {
+    title:
+      'Systematic Evaluation of Signal-to-Image Transformation Pipelines for Vision Transformer-based Sleep Stage Classification',
+    venue: 'Conference paper, SCICASH 2026',
+    type: 'Under Review',
+    links: [],
+  },
+  {
+    title:
+      'Quantum Mutual Information for Causal Feature Selection: An Empirical Study of Feature Recovery and Treatment Effect Estimation',
+    venue: 'Conference paper, ICTer 2026',
+    type: 'Under Review',
+    links: [],
+  },
   {
     title:
       'Representation Separability of Signal-to-Image Transformations for Sleep Stage Classification Using Pretrained Vision Transformers',
@@ -39,39 +53,6 @@ const publications: Publication[] = [
       { label: 'Code', url: '#' },
     ],
   },
-  // --- Dummy entries below, replace with real publications ---
-  {
-    title: 'Deep Learning Approaches for Financial Time Series Forecasting in Emerging Markets',
-    authors: 'Janith R.R.H. Ramanayake, Nadeesha K. Perera',
-    venue: 'International Conference on Machine Learning Applications (ICMLA), 2025',
-    type: 'Presentation',
-    links: [
-      { label: 'PDF', url: '#' },
-      { label: 'Slides', url: '#' },
-      { label: 'Code', url: '#' },
-    ],
-  },
-  {
-    title: 'Statistical Modeling of Climate Variability Using Bayesian Hierarchical Methods',
-    authors: 'Janith R.R.H. Ramanayake, Tharindu S. Fernando, Chamari L. Silva',
-    venue: 'Sri Lanka Statistical Association Conference (SLSAC), 2024',
-    type: 'Abstract',
-    links: [
-      { label: 'PDF', url: '#' },
-      { label: 'Code', url: '#' },
-    ],
-  },
-  {
-    title: 'Low-Resource Neural Machine Translation for Sinhala-English Language Pairs',
-    authors: 'Kasun M. Bandara, Janith R.R.H. Ramanayake',
-    venue: 'International Conference on Natural Language Processing (ICONLP), 2024',
-    type: 'Presentation',
-    links: [
-      { label: 'PDF', url: '#' },
-      { label: 'Slides', url: '#' },
-      { label: 'Code', url: '#' },
-    ],
-  },
 ];
 
 const INITIAL_COUNT = 3;
@@ -91,24 +72,26 @@ export default function Publications() {
               <span className="font-mono text-sm text-faint pt-0.5 shrink-0">[{i + 1}]</span>
               <div>
                 <h3 className="font-medium text-ink leading-snug">{pub.title}</h3>
-                <p className="text-sm text-muted mt-1">{pub.authors}</p>
+                {pub.authors && <p className="text-sm text-muted mt-1">{pub.authors}</p>}
                 <p className="text-sm mt-1">
                   <em className="text-muted">{pub.venue}</em>{' '}
                   <span className="tag ml-1 align-middle">{pub.type}</span>
                 </p>
-                <div className="flex flex-wrap gap-x-4 gap-y-1 mt-2">
-                  {pub.links.map((link) => (
-                    <a
-                      key={link.label}
-                      href={link.url}
-                      target={link.url.startsWith('http') ? '_blank' : undefined}
-                      rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="link-accent text-sm"
-                    >
-                      [{link.label}]
-                    </a>
-                  ))}
-                </div>
+                {pub.links.length > 0 && (
+                  <div className="flex flex-wrap gap-x-4 gap-y-1 mt-2">
+                    {pub.links.map((link) => (
+                      <a
+                        key={link.label}
+                        href={link.url}
+                        target={link.url.startsWith('http') ? '_blank' : undefined}
+                        rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        className="link-accent text-sm"
+                      >
+                        [{link.label}]
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
             </li>
           ))}

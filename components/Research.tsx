@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import ResearchImage from '@/components/ResearchImage';
 import { getLatestProjects } from '@/lib/researchData';
 
 export default function Research() {
@@ -14,12 +14,11 @@ export default function Research() {
             <Link key={project.slug} href={`/research/${project.slug}`} className="block group">
               <article className="card p-5 flex flex-col sm:flex-row gap-5">
                 <div className="shrink-0 sm:w-44">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    width={350}
-                    height={200}
-                    className="rounded-md object-cover w-full h-32 sm:h-28 border border-line"
+                  <ResearchImage
+                    image={project.image}
+                    title={project.title}
+                    className="rounded-md w-full h-32 sm:h-28 border border-line"
+                    sizes="(min-width: 640px) 176px, 100vw"
                   />
                 </div>
                 <div className="min-w-0">
@@ -28,6 +27,11 @@ export default function Research() {
                       {project.title}
                     </h3>
                   </div>
+                  {(project.affiliation || project.period) && (
+                    <p className="text-xs text-faint mb-1.5">
+                      {[project.affiliation, project.period].filter(Boolean).join(' · ')}
+                    </p>
+                  )}
                   <p className="text-sm text-muted leading-relaxed mb-3">{project.description}</p>
                   <div className="flex flex-wrap items-center gap-2">
                     <span className={`tag ${project.status === 'Ongoing' ? '' : 'opacity-70'}`}>

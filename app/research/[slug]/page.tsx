@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import ResearchImage from '@/components/ResearchImage';
 import { getProjectBySlug, getAllProjectSlugs } from '@/lib/researchData';
 
 export function generateStaticParams() {
@@ -44,6 +44,12 @@ export default async function ResearchProject({
             {project.title}
           </h1>
 
+          {(project.affiliation || project.period) && (
+            <p className="text-sm text-muted mb-4">
+              {[project.affiliation, project.period].filter(Boolean).join(' · ')}
+            </p>
+          )}
+
           <div className="flex flex-wrap items-center gap-2 mb-10">
             <span className={`tag ${project.status === 'Ongoing' ? '' : 'opacity-70'}`}>
               {project.status}
@@ -55,9 +61,13 @@ export default async function ResearchProject({
             ))}
           </div>
 
-          <div className="relative h-60 sm:h-80 rounded-lg overflow-hidden border border-line mb-10">
-            <Image src={project.image} alt={project.title} fill className="object-cover" priority />
-          </div>
+          <ResearchImage
+            image={project.image}
+            title={project.title}
+            className="rounded-lg border border-line h-60 sm:h-80 mb-10"
+            sizes="(min-width: 768px) 768px, 100vw"
+            priority
+          />
 
           <div className="prose-academic">
             <p>{project.description}</p>

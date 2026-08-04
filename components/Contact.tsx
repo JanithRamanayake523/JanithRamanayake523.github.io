@@ -67,8 +67,7 @@ export default function Contact() {
           </a>
           <a
             href={site.cvUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            download="Janith-Ramanayake-CV.pdf"
             className="inline-flex items-center gap-2 border border-white/35 text-white font-semibold px-7 py-3.5 rounded-full hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300"
           >
             Download CV
