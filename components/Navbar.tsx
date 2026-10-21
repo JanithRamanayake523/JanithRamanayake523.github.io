@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { site } from '@/lib/site';
 
@@ -8,6 +8,25 @@ const NAV_ITEMS = ['About', 'News', 'Publications', 'Experience', 'Blog', 'Conta
 
 export default function Navbar({ alwaysBlue = false }: { alwaysBlue?: boolean }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [active, setActive] = useState('');
+
+  // Highlight the nav item for the section currently in view (home page only)
+  useEffect(() => {
+    if (alwaysBlue) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActive(e.target.id);
+        });
+      },
+      { rootMargin: '-40% 0px -55% 0px' }
+    );
+    NAV_ITEMS.forEach((item) => {
+      const el = document.getElementById(item.toLowerCase());
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, [alwaysBlue]);
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-[#0c6f50]/95 backdrop-blur-md border-b border-[#09573e] shadow-[0_4px_20px_-8px_rgba(12,111,80,0.5)]">
@@ -37,7 +56,12 @@ export default function Navbar({ alwaysBlue = false }: { alwaysBlue?: boolean })
                 <li key={item}>
                   <a
                     href={alwaysBlue ? `/#${id}` : `#${id}`}
-                    className="text-sm text-emerald-50/85 hover:text-white transition-colors"
+                    aria-current={active === id ? 'true' : undefined}
+                    className={`text-sm transition-colors border-b pb-0.5 ${
+                      active === id
+                        ? 'text-white border-white'
+                        : 'text-emerald-50/85 border-transparent hover:text-white'
+                    }`}
                   >
                     {item}
                   </a>
@@ -51,6 +75,7 @@ export default function Navbar({ alwaysBlue = false }: { alwaysBlue?: boolean })
             className="md:hidden w-10 h-10 flex items-center justify-center"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
           >
             <div className="flex flex-col gap-[5px]">
               <span

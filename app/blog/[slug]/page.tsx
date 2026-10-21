@@ -4,6 +4,20 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { getPostBySlug, getAllSlugs } from '@/lib/blogData';
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const post = getPostBySlug((await params).slug);
+  if (!post) return {};
+  return {
+    title: `${post.title} | Janith Ramanayake`,
+    description: post.excerpt,
+    openGraph: { title: post.title, description: post.excerpt, images: [post.image] },
+  };
+}
+
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
 }

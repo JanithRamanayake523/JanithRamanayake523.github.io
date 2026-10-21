@@ -4,6 +4,19 @@ import Footer from '@/components/Footer';
 import ResearchImage from '@/components/ResearchImage';
 import { getProjectBySlug, getAllProjectSlugs } from '@/lib/researchData';
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const project = getProjectBySlug((await params).slug);
+  if (!project) return {};
+  return {
+    title: `${project.title} | Janith Ramanayake`,
+    description: project.description,
+  };
+}
+
 export function generateStaticParams() {
   return getAllProjectSlugs().map((slug) => ({ slug }));
 }

@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import { site, researchInterests } from '@/lib/site';
+import HeroBackground from '@/components/HeroBackground';
+import RotatingKeywords from '@/components/RotatingKeywords';
 
 const socials = [
   {
@@ -39,18 +41,31 @@ const socials = [
   },
 ];
 
+const focusAreas = [
+  'Computational Statistics',
+  'Deep Learning for Statistics',
+  'Causal Inference',
+  'LLM Reasoning',
+  'Agentic Systems',
+  'Low-Resource Language Models',
+];
+
 export default function Hero() {
   return (
     <section
       id="about"
-      className="pt-32 pb-16"
+      className="relative min-h-screen min-h-[100svh] pt-16 pb-8 flex items-center"
       style={{ background: '#f0f0ef' }}
     >
-      <div className="max-w-4xl mx-auto px-5 sm:px-8">
+      <HeroBackground />
+      <div className="relative w-full max-w-5xl mx-auto px-5 sm:px-8">
         <div className="flex flex-col sm:flex-row gap-10 sm:items-stretch">
           {/* Photo — blends into the section background, stretches to content height */}
-          <div className="shrink-0 mx-auto sm:mx-0 w-[260px] sm:w-[300px] flex flex-col">
-            <div className="relative w-full h-[350px] sm:flex-1">
+          <div
+            className="hero-in shrink-0 mx-auto sm:mx-0 w-[260px] sm:w-[300px] flex flex-col"
+            style={{ '--d': '0ms' } as React.CSSProperties}
+          >
+            <div className="hero-photo relative w-full h-[350px] sm:flex-1">
               <Image
                 src={site.photo}
                 alt={site.name}
@@ -70,7 +85,7 @@ export default function Hero() {
                   rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   aria-label={social.label}
                   title={social.label}
-                  className="text-muted hover:text-accent transition-colors"
+                  className="text-muted hover:text-accent hover:-translate-y-0.5 transition-all"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     {social.icon}
@@ -89,40 +104,50 @@ export default function Hero() {
 
           {/* Intro */}
           <div className="min-w-0">
-            <h1 className="font-display text-4xl font-semibold tracking-tight mb-1">
+            <h1
+              className="hero-in font-display text-4xl font-semibold tracking-tight mb-1"
+              style={{ '--d': '150ms' } as React.CSSProperties}
+            >
               {site.name}
             </h1>
-            <p className="text-muted mb-6">{site.headline}</p>
+            <p className="hero-in text-muted mb-3" style={{ '--d': '250ms' } as React.CSSProperties}>
+              {site.headline}
+            </p>
+            <div className="hero-in" style={{ '--d': '350ms' } as React.CSSProperties}>
+              <RotatingKeywords prefix="Working on" words={focusAreas} />
+            </div>
 
             <div className="space-y-4 text-[0.98rem] leading-relaxed text-[#3d4457]">
-              <p>
-                Hello! I am a Master&apos;s student in Data Science and a{' '}
-                <strong className="text-ink font-semibold">Graduate Teaching Assistant</strong> at
-                the Department of Statistics, University of Colombo.
+              <p className="hero-in" style={{ '--d': '450ms' } as React.CSSProperties}>
+                Hello! I am a{' '}
+                <strong className="text-ink font-semibold">Research Engineer</strong> and{' '}
+                <strong className="text-ink font-semibold">MSc (by Research) Student</strong> at
+                the Department of Computer Science &amp; Engineering, University of Moratuwa. I hold
+                a <strong className="text-ink font-semibold">BSc (Hons) in Data Science</strong> with{' '}
+                <strong className="text-ink font-semibold">First Class</strong> from the University
+                of Colombo.
               </p>
-              <p>
-                My work sits at the intersection of machine learning and statistics — I study how
-                deep learning can extract meaningful patterns from{' '}
-                <strong className="text-ink font-semibold">signals</strong>,{' '}
-                <strong className="text-ink font-semibold">images</strong>, and{' '}
-                <strong className="text-ink font-semibold">language</strong>, with applications
-                ranging from sleep-stage classification to consumer confidence measurement and
-                cross-lingual sentiment analysis.
+              <p className="hero-in" style={{ '--d': '550ms' } as React.CSSProperties}>
+                My research interests lie at the intersection of{' '}
+                <strong className="text-ink font-semibold">Statistics</strong> and{' '}
+                <strong className="text-ink font-semibold">AI</strong>, particularly
+                in using deep learning to solve statistical problems. More recently, I have started
+                working with <strong className="text-ink font-semibold">LLMs</strong>,{' '}
+                <strong className="text-ink font-semibold">Agents</strong>, and{' '}
+                <strong className="text-ink font-semibold">Reasoning</strong>, with a focus on
+                making them work well for{' '}
+                <strong className="text-ink font-semibold">low-resource languages</strong>.
               </p>
-              <p>
-                Previously, I worked as a research intern at the Central Bank of Sri Lanka. I am
-                always happy to talk about research, collaboration, or graduate study —{' '}
-                <a href={`mailto:${site.email}`} className="link-accent">
-                  reach out
-                </a>{' '}
-                anytime.
+              <p className="hero-in" style={{ '--d': '650ms' } as React.CSSProperties}>
+                I am looking for PhD opportunities in Statistics, Data Science, or Computer
+                Science, and I am always happy to talk about research or collaboration.
               </p>
             </div>
 
             {/* Research interests */}
-            <div className="flex flex-wrap gap-2 mt-6">
+            <div className="hero-in flex flex-wrap gap-2 mt-6" style={{ '--d': '750ms' } as React.CSSProperties}>
               {researchInterests.map((interest) => (
-                <span key={interest} className="tag">
+                <span key={interest} className="tag hero-tag">
                   {interest}
                 </span>
               ))}
@@ -130,6 +155,15 @@ export default function Hero() {
           </div>
         </div>
       </div>
+      <a
+        href="#news"
+        aria-label="Scroll to content"
+        className="hero-cue absolute bottom-5 left-1/2 -translate-x-1/2 text-faint hover:text-accent transition-colors"
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6 9l6 6 6-6" />
+        </svg>
+      </a>
     </section>
   );
 }
