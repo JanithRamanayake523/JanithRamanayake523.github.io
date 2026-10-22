@@ -32,7 +32,7 @@ export const site = {
 // home page, everything is on /news) ----
 // `date` is 'YYYY/MM' (or just 'YYYY' when the month is unknown).
 // `title` is the one-line headline; `text` is the full sentence shown on /news.
-export type NewsType = 'Role' | 'Publication' | 'Talk' | 'Education' | 'Project' | 'Milestone'
+export type NewsType = 'Role' | 'Research' | 'Talk' | 'Education' | 'Achievement'
 
 export interface NewsItem {
   date: string
@@ -68,19 +68,19 @@ export const news: NewsItem[] = [
   },
   {
     date: '2026',
-    type: 'Publication',
+    type: 'Research',
     title: 'Two conference papers accepted at ICTer 2026 and SICASH 2026',
     text: 'Two conference papers accepted: quantum mutual information for causal feature selection (ICTer 2026) and signal-to-image transformation pipelines for sleep stage classification (SICASH 2026).', // month unknown
   },
   {
     date: '2026/01',
-    type: 'Publication',
+    type: 'Research',
     title: 'Abstract accepted at RISTCon 2026',
     text: 'Abstract on predicting thermophysical properties of polymers accepted at the Ruhuna International Science and Technology Conference (RISTCon 2026).',
   },
   {
     date: '2025/11',
-    type: 'Milestone',
+    type: 'Achievement',
     title: 'Achieved IELTS Academic Band 7.0',
     text: 'Achieved IELTS Academic Overall Band 7.0 (Listening 8.0).',
   },
@@ -97,7 +97,7 @@ export const news: NewsItem[] = [
     text: 'Started as a Temporary Assistant Lecturer at the Department of Statistics, University of Colombo.',
   },
   {
-    date: '2025/04',
+    date: '2025/05',
     type: 'Education',
     title: 'Graduated BSc (Hons) in Data Science, First Class',
     text: 'Graduated with a BSc (Hons) in Data Science from the University of Colombo, First Class (GPA 3.87/4.00).',
@@ -106,31 +106,49 @@ export const news: NewsItem[] = [
     date: '2025/04',
     type: 'Role',
     title: 'Completed internship at the Central Bank of Sri Lanka',
-    text: 'Completed my internship as a Data Scientist at the Central Bank of Sri Lanka, building a consumer confidence index from Google Search Trends and a trilingual financial sentiment model.',
+    text: 'Completed my internship as an Intern Research Engineer in Data Science at the Statistics Department of the Central Bank of Sri Lanka, building a consumer confidence index from Google Search Trends and a trilingual financial sentiment model.',
   },
   {
     date: '2025/03',
-    type: 'Project',
+    type: 'Research',
     title: 'Completed undergraduate thesis on sleep stage classification',
     text: 'Completed my undergraduate thesis on enhancing sleep stage classification with vision transformers.',
   },
   {
     date: '2024/11',
-    type: 'Project',
-    title: 'Built HappyHire, a generative AI recruitment agent',
-    text: 'Built HappyHire, a generative AI recruitment management agent, with team Rapid Vortex at the IntelliHack competition.',
+    type: 'Role',
+    title: 'Started internship at the Central Bank of Sri Lanka',
+    text: 'Started an internship as an Intern Research Engineer in Data Science at the Statistics Department of the Central Bank of Sri Lanka, a mandatory requirement of my undergraduate degree.',
+  },
+  {
+    date: '2024/07',
+    type: 'Achievement',
+    title: 'Won Most Popular Project at IntelliHack NextGen Hackathon',
+    text: 'Participated in IntelliHack NextGen, Sri Lanka’s oldest AI/ML Hackathon, organized by the IEEE Computer Society Student Chapter at UCSC. Our team, Rapid_Vortex, built HappyHire, a generative AI recruitment management agent, which won the Most Popular Project award.',
   },
   {
     date: '2024/06',
-    type: 'Project',
-    title: 'Launched CrediDecode credit scoring platform',
-    text: 'Launched CrediDecode, an interactive credit score classification and analysis platform.', // [DUMMY] — adjust date
+    type: 'Achievement',
+    title: 'Ranked 3rd at Predicta ML Hackathon',
+    text: 'Participated in Predicta, a Kaggle-based ML Hackathon organized by the IEEE Student Branch at the University of Peradeniya. Our team, codeX, ranked 3rd on the private leaderboard.',
+  },
+  {
+    date: '2023/12',
+    type: 'Achievement',
+    title: 'Selected for the final round of Mini Hackathon',
+    text: 'Participated in Mini Hackathon, an ML Hackathon organized by the Stat Circle, University of Colombo, and was selected for the final round with team codeX.',
+  },
+  {
+    date: '2023/04',
+    type: 'Education',
+    title: 'Selected for the competitive BSc (Hons) in Data Science programme',
+    text: 'Selected for the highly competitive BSc (Hons) in Data Science programme at the Department of Statistics, University of Colombo. Only 15 students were selected from a cohort of 350+, based on performance in applied mathematics, statistics and computer science subjects over the first two years.',
   },
   {
     date: '2021/04',
     type: 'Education',
-    title: 'Started BSc (Hons) in Data Science',
-    text: 'Started my BSc (Hons) in Data Science at the University of Colombo.',
+    title: 'Started BSc in Physical Science at University of Colombo',
+    text: 'Started the BSc in Physical Science programme at the Faculty of Science, University of Colombo, the top-ranked university in Sri Lanka and home to the country’s top science faculty.',
   },
 ]
 

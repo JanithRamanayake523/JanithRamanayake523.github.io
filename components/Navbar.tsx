@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { site } from '@/lib/site';
 
-const NAV_ITEMS = ['About', 'News', 'Publications', 'Experience', 'Blog', 'Contact'];
+const NAV_ITEMS = ['About', 'News', 'Publications', 'Research', 'Experience', 'Blog', 'Contact'];
 
 export default function Navbar({ alwaysBlue = false }: { alwaysBlue?: boolean }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

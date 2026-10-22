@@ -6,12 +6,11 @@ import { news, type NewsType } from '@/lib/site';
 
 const FILTERS: ('All' | NewsType)[] = [
   'All',
-  'Publication',
+  'Research',
   'Talk',
   'Role',
   'Education',
-  'Project',
-  'Milestone',
+  'Achievement',
 ];
 
 export default function NewsArchive() {
